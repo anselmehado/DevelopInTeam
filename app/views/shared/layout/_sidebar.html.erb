@@ -15,13 +15,20 @@
     <div class="user-panel mt-3 pb-3 mb-3">
       <div class="info">
         <a href="#" class="d-block mb-1"><%= I18n.t('views.messages.create_agenda') %></a>
+
         <%= form_with model: :agenda, scope: :post, url: team_agendas_path(@working_team), local: true do |form| %>
           <div class="input-group input-group-sm">
             <%= text_field_tag :title, '', { class: 'form-control', placeholder: I18n.t('views.messages.input_agenda_title') } %>
             <span class="input-group-append">
               <button type="submit" class="btn btn-info btn-flat"><%= I18n.t('views.button.create') %></button>
             </span>
+
+
+
           </div>
+          <span class="input-group-append">
+            <button type="submit" class="btn btn-info btn-danger"><%= I18n.t('views.button.delete') %></button>
+          </span>
         <% end %>
       </div>
     </div>
@@ -49,6 +56,8 @@
                 <%= link_to new_agenda_article_path(agenda), class: 'nav-link' do %>
                   <p>+ <%= I18n.t('views.messages.create_article') %></p>
                 <% end %>
+
+
               </li>
             </ul>
           </li>
