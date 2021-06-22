@@ -22,6 +22,9 @@
               <button type="submit" class="btn btn-info btn-flat"><%= I18n.t('views.button.create') %></button>
             </span>
 
+            <span class="input-group-append">
+              <button type="submit" class="btn btn-info btn-danger"><%= I18n.t('views.button.delete') %></button>
+            </span>
           </div>
         <% end %>
       </div>
@@ -36,9 +39,6 @@
               <p>
                 <%= agenda.title %>
                 <i class="right fa fa-angle-left"></i>
-
-                <button type="submit" class="btn btn-info btn-danger"><%= I18n.t('views.button.delete') %></button>
-
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: block;">
