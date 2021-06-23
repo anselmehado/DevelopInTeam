@@ -13,7 +13,7 @@ class AssignsController < ApplicationController
       redirect_to team_url(team), notice: I18n.t('views.messages.failed_to_assign')
     end
   end
-
+  #
   def destroy
     assign = Assign.find(params[:id])
     destroy_message = assign_destroy(assign, assign.user)
