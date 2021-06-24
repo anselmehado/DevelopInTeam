@@ -17,10 +17,12 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.new(team_params)
-    if @team.owner == current_user
+    if @team.owner_id  == current_user
       render :edit
     end
   end
+
+
 
   def create
     @team = Team.new(team_params)
@@ -34,6 +36,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def changer
+
+
+  end
   def update
     if @team.update(team_params)
       redirect_to @team, notice: I18n.t('views.messages.update_team')
