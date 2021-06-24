@@ -26,6 +26,7 @@ class AgendasController < ApplicationController
       agenda_to_be_destroyed = @agenda
     if @agenda.present?
       @agenda.destroy
+      PostMailer.post_mail(post).deliver  ##Addendum
       team_id = agenda_to_be_destroyed.team_id
       team_members = User.where(keep_team_id: team_id)
       team_members.each do |member|
