@@ -44,6 +44,7 @@ class TeamsController < ApplicationController
   end
 
   def destroy
+    @team = Team.new(team_params)
     if @team.owner == current_user
     @team.destroy
     redirect_to teams_url, notice: I18n.t('views.messages.delete_team')
