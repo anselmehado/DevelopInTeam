@@ -70,7 +70,7 @@ class TeamsController < ApplicationController
      @team.update(team_params)
      ownerMailer.owner_owner_mail(new_owner.user.email, @team.name).deliver
      redirect_to team_url(params[:team_id])
-   end 
+   end
 
 
 
@@ -89,4 +89,3 @@ class TeamsController < ApplicationController
   def team_params
     params.fetch(:team, {}).permit %i[name icon icon_cache owner_id keep_team_id]
   end
-end
