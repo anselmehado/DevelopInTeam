@@ -16,9 +16,15 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @team = Team.new(team_params)
-    if @team.owner_id  == current_user
-      render :edit
+    # assign = Assign.find(params[:id])
+    # if @assign.user != assign.team.owner_id
+    #   assign.user = assign.team.owner_id
+    #
+    #
+    # assigned_user = assign.team.owner
+    # # @team = Team.new(team_params)
+    # # if @team.owner_id  == current_user
+    # #   render :edit
     end
   end
 
@@ -56,6 +62,19 @@ class TeamsController < ApplicationController
     redirect_to teams_url, notice: I18n.t('views.messages.delete_team')
   end
   end
+
+  def owner
+     @team = Team.friendly.find(params[:team_id])
+     new_owner = Assign.find(params[:id])
+     @team.owner = new_owner.user
+     @team.update(team_params)
+     ownerMailer.owner_owner_mail(new_owner.user.email, @team.name).deliver
+     redirect_to team_url(params[:team_id])
+   end 
+
+
+
+
 
   def dashboard
     @team = current_user.keep_team_id ? Team.find(current_user.keep_team_id) : current_user.teams.first
