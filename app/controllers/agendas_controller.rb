@@ -30,6 +30,8 @@ class AgendasController < ApplicationController
       team_id = agenda_to_be_destroyed.team_id
       team_members = User.where(keep_team_id: team_id)
       team_members.each do |member|
+
+      AssignMailer.assign_mail(@assign).deliver  
       end
       redirect_to dashboard_url, notice: "agenda destroyed"
     end
