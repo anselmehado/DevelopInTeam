@@ -37,10 +37,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  def owner
-
-
-  end
   def update
     if @team.update(team_params)
       redirect_to @team, notice: I18n.t('views.messages.update_team')
@@ -110,4 +106,6 @@ class TeamsController < ApplicationController
   def team_params
     params.fetch(:team, {}).permit %i[name icon icon_cache owner_id keep_team_id]
   end
+
+  
 end
