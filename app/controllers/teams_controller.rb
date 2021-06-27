@@ -56,7 +56,7 @@ class TeamsController < ApplicationController
 
   def owner_change
     if @team.update(owner_params)
-      TeamOwnerMailer.mail_new_owner(@new_owner).deliver
+      Team.OwnerMailer.mail_new_owner(@new_owner).deliver
       redirect_to @team
     else
       render @team
@@ -107,5 +107,5 @@ class TeamsController < ApplicationController
     params.fetch(:team, {}).permit %i[name icon icon_cache owner_id keep_team_id]
   end
 
-  
+
 end
