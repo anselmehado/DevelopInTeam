@@ -1,6 +1,5 @@
 class OwnerMailer < ApplicationMailer
-  def owner_mail()
-  @contact = contact
-  mail to: "your email address", subject: "Inquiry confirmation email"
-end
+    def mail_new_owner(mail)
+        mail to: "anselmehado85@yahoo.com", subject: "Inquiry confirmation email"
+    end
 end

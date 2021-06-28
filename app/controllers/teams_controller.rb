@@ -56,7 +56,7 @@ class TeamsController < ApplicationController
 
   def owner_change
     if @team.update(owner_params)
-      Team.OwnerMailer.mail_new_owner(@new_owner).deliver
+      OwnerMailer.mail_new_owner(@new_owner).deliver
       redirect_to @team
     else
       render @team
